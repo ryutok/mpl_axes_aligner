@@ -105,8 +105,8 @@ def xaxes(ax1, org1, ax2, org2, pos=None):
                         "matplotlib.")
 
     # Expand plotting ranges when org1 and/or org2 are out of the ranges
-    lim1 = [min(*lim1, org1), max(*lim1, org1)]
-    lim2 = [min(*lim2, org2), max(*lim2, org2)]
+    lim1 = [min(org1, *lim1), max(org1, *lim1)]
+    lim2 = [min(org2, *lim2), max(org2, *lim2)]
     if ax1.xaxis_inverted():
         lim1.reverse()
     if ax2.xaxis_inverted():
