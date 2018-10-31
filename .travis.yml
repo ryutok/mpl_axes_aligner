@@ -18,7 +18,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - pytest --cov-report= --cov=mpl_axes_aligner
+  - pytest --cov-report=xml --cov=mpl_axes_aligner
 
 after_script:
   - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
