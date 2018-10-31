@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+[dev-packages]
+pyflakes = "*"
+pycodestyle = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-runner = "*"
+matplotlib = "*"
+
+[requires]
