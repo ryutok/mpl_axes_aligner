@@ -1,9 +1,10 @@
 import pytest
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import mpl_axes_aligner
 
-matplotlib.use('Agg')
 
 @pytest.mark.parametrize('pos', [-10, 0, 1, 10])
 def test_yaxes_pos_ValueError(pos):
