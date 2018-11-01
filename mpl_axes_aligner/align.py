@@ -1,42 +1,45 @@
-def _calc_range(org1, org2, lim1, lim2, pos):
-    left1, right1 = lim1
-    left2, right2 = lim2
+from mpl_axes_aligner import shift
 
-    # Calculate the relative position of origins
-    rorg1 = (org1 - left1) / (right1 - left1)
-    rorg2 = (org2 - left2) / (right2 - left2)
 
-    if pos is None:
-        pos = (rorg1 + rorg2) / 2
-    elif pos <= 0 or pos >= 1:
-        raise ValueError("The position to align the origins should be "
-                         "0 < pos < 1.")
+def _calc_rorg(org, ival, fval):
+    rorg = (org - ival) / (fval - ival)
+    if rorg < 0:
+        rorg = 0
+        ival = org
+    elif rorg > 1:
+        rorg = 1
+        fval = org
+    return rorg, ival, fval
 
-    if rorg1 > pos:
-        right1 = (org1 - left1 + pos*left1) / pos
-    else:
-        left1 = (org1 - pos*right1) / (1 - pos)
-    if rorg2 > pos:
-        right2 = (org2 - left2 + pos*left2) / pos
-    else:
-        left2 = (org2 - pos*right2) / (1 - pos)
 
-    return [left1, right1], [left2, right2]
+def _calc_pos(org1, org2, lim1, lim2):
+    ival1, fval1 = lim1
+    ival2, fval2 = lim2
+
+    rorg1, ival1, fval1 = _calc_rorg(org1, ival1, fval1)
+    rorg2, ival2, fval2 = _calc_rorg(org2, ival2, fval2)
+    pos = (rorg1 + rorg2) / 2
+
+    if pos == 0 or pos == 1:
+        raise ValueError("When pos=None, at least one origin should be "
+                         "within the initial plotting range.")
+
+    return pos
 
 
 def yaxes(ax1, org1, ax2, org2, pos=None):
     """
-    Adjust the plotting range of two y axes to align the given origins
-    with the given position.
+    Adjust the plotting range of two y axes to align the origins with
+    the position.
 
     Parameters
     ----------
     ax1 : matplotlib.axes.Axes
-        First axis.
+        First axis object of matplotlib.
     org1 : float
-        Origin of first axis to be align.
+        Origin of first axis to be aligned.
     ax2 : matplotlib.axes.Axes
-        Second axis.
+        Second axis object of matplotlib.
     org2 : float
         Origin of second axis to be aligned.
     pos : float
@@ -48,43 +51,40 @@ def yaxes(ax1, org1, ax2, org2, pos=None):
     None
     """
 
-    # Get plotting ranges
-    try:
-        lim1 = list(ax1.get_ylim())
-        lim2 = list(ax2.get_ylim())
-    except AttributeError or TypeError:
-        raise TypeError("'ax1' and 'ax2' should be Axes objects of "
-                        "matplotlib.")
+    if pos is None:
+        # Get plotting ranges
+        try:
+            lim1 = list(ax1.get_ylim())
+            lim2 = list(ax2.get_ylim())
+        except AttributeError or TypeError:
+            raise TypeError("'ax1' and 'ax2' should be Axes objects of "
+                            "matplotlib.")
 
-    # Expand plotting ranges when org1 and/or org2 are out of the ranges
-    lim1 = [min(org1, *lim1), max(org1, *lim1)]
-    lim2 = [min(org2, *lim2), max(org2, *lim2)]
-    if ax1.yaxis_inverted():
-        lim1.reverse()
-    if ax2.yaxis_inverted():
-        lim2.reverse()
+        # Calculate the position
+        pos = _calc_pos(org1, org2, lim1, lim2)
 
-    # Calculate the new ranges
-    lim1, lim2 = _calc_range(org1, org2, lim1, lim2, pos)
+    elif pos <= 0 or pos >= 1:
+        raise ValueError("The position to align the origins should be "
+                         "0 < pos < 1.")
 
     # Apply the new ranges
-    ax1.set_ylim(*lim1)
-    ax2.set_ylim(*lim2)
+    shift.yaxis(ax1, org1, pos, True)
+    shift.yaxis(ax2, org2, pos, True)
 
 
 def xaxes(ax1, org1, ax2, org2, pos=None):
     """
-    Adjust the plotting range of two x axes to align the given origins
-    with the given position.
+    Adjust the plotting range of two x axes to align the origins with
+    the position.
 
     Parameters
     ----------
     ax1 : matplotlib.axes.Axes
-        First axis.
+        First axis object of matplotlib.
     org1 : float
-        Origin of first axis to be align.
+        Origin of first axis to be aligned.
     ax2 : matplotlib.axes.Axes
-        Second axis.
+        Second axis object of matplotlib.
     org2 : float
         Origin of second axis to be aligned.
     pos : float
@@ -96,25 +96,22 @@ def xaxes(ax1, org1, ax2, org2, pos=None):
     None
     """
 
-    # Get plotting ranges
-    try:
-        lim1 = list(ax1.get_xlim())
-        lim2 = list(ax2.get_xlim())
-    except AttributeError or TypeError:
-        raise TypeError("'ax1' and 'ax2' should be Axes objects of "
-                        "matplotlib.")
+    if pos is None:
+        # Get plotting ranges
+        try:
+            lim1 = list(ax1.get_xlim())
+            lim2 = list(ax2.get_xlim())
+        except AttributeError or TypeError:
+            raise TypeError("'ax1' and 'ax2' should be Axes objects of "
+                            "matplotlib.")
 
-    # Expand plotting ranges when org1 and/or org2 are out of the ranges
-    lim1 = [min(org1, *lim1), max(org1, *lim1)]
-    lim2 = [min(org2, *lim2), max(org2, *lim2)]
-    if ax1.xaxis_inverted():
-        lim1.reverse()
-    if ax2.xaxis_inverted():
-        lim2.reverse()
+        # Calculate the position
+        pos = _calc_pos(org1, org2, lim1, lim2)
 
-    # Calculate the new ranges
-    lim1, lim2 = _calc_range(org1, org2, lim1, lim2, pos)
+    elif pos <= 0 or pos >= 1:
+        raise ValueError("The position to align the origins should be "
+                         "0 < pos < 1.")
 
     # Apply the new ranges
-    ax1.set_xlim(*lim1)
-    ax2.set_xlim(*lim2)
+    shift.xaxis(ax1, org1, pos, True)
+    shift.xaxis(ax2, org2, pos, True)
