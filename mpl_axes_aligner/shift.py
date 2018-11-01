@@ -34,13 +34,38 @@ def yaxis(ax, org, pos, expand=False):
         Origin be shifted.
     pos : float
         Relative position of the shifted origin [0 < pos < 1].
-    expand : bool
+    expand : bool, optional
         When it is True, the plotting range is expanded to remain the
         initial range. Otherwise, the range is simply shifted.
 
     Returns
     -------
-    None
+
+    Raises
+    ------
+    TypeError
+        If 'ax' is not the Axes object of matplotlib.
+    ValueError
+        When 'expand' is True, if 'pos' is less than or equal to 0,
+        or more than or equal to 1. Otherwise, if 'pos' is less than 0,
+        or more than 1.
+
+    Examples
+    --------
+    >>> import matplotlib.pyplot as plt
+    >>> from mpl_axes_aligner import shift
+    >>> fig = plt.figure()
+    >>> ax = fig.add_subplot(111)
+    >>> ax.set_ylim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> shift.yaxis(ax, 0, 0.5, False)
+    >>> ax.get_ylim()
+    (-0.5, 0.5)
+    >>> ax.set_ylim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> shift.yaxis(ax, 0, 0.5, True)
+    >>> ax.get_ylim()
+    (-1.0, 1.0)
     """
 
     try:
@@ -68,13 +93,38 @@ def xaxis(ax, org, pos, expand=False):
         Origin be shifted.
     pos : float
         Relative position of the shifted origin [0 < pos < 1].
-    expand : bool
+    expand : bool, optional
         When it is True, the plotting range is expanded to remain the
         initial range. Otherwise, the range is simply shifted.
 
     Returns
     -------
-    None
+
+    Raises
+    ------
+    TypeError
+        If 'ax' is not the Axes object of matplotlib.
+    ValueError
+        When 'expand' is True, if 'pos' is less than or equal to 0,
+        or more than or equal to 1. Otherwise, if 'pos' is less than 0,
+        or more than 1.
+
+    Examples
+    --------
+    >>> import matplotlib.pyplot as plt
+    >>> from mpl_axes_aligner import shift
+    >>> fig = plt.figure()
+    >>> ax = fig.add_subplot(111)
+    >>> ax.set_xlim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> shift.xaxis(ax, 0, 0.5, False)
+    >>> ax.get_xlim()
+    (-0.5, 0.5)
+    >>> ax.set_xlim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> shift.xaxis(ax, 0, 0.5, True)
+    >>> ax.get_xlim()
+    (-1.0, 1.0)
     """
 
     try:

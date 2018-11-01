@@ -12,5 +12,7 @@ pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"
 matplotlib = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [requires]

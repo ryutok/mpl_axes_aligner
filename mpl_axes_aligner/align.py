@@ -42,13 +42,36 @@ def yaxes(ax1, org1, ax2, org2, pos=None):
         Second axis object of matplotlib.
     org2 : float
         Origin of second axis to be aligned.
-    pos : float
+    pos : float or None, optional
         Relative position to align the origins [0 < pos < 1].
         When pos is None, the origins are aligned to the middle of them.
 
     Returns
     -------
-    None
+
+    Raises
+    ------
+    TypeError
+        If 'ax1' and/or 'ax2' are not the Axes object of matplotlib.
+    ValueError
+        If 'pos' is less than or equal to 0, or more than or equal to 1.
+
+    Examples
+    --------
+    >>> import matplotlib.pyplot as plt
+    >>> from mpl_axes_aligner import align
+    >>> fig = plt.figure()
+    >>> ax1 = fig.add_subplot(111)
+    >>> ax2 = ax1.twinx()
+    >>> ax1.set_ylim(-1.0, 0.0)
+    (-1.0, 0.0)
+    >>> ax2.set_ylim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> align.yaxes(ax1, -0.3, ax2, 0.3, 0.5)
+    >>> ax1.get_ylim()
+    (-1.0, 0.4)
+    >>> ax2.get_ylim()
+    (-0.4, 1.0)
     """
 
     if pos is None:
@@ -87,13 +110,36 @@ def xaxes(ax1, org1, ax2, org2, pos=None):
         Second axis object of matplotlib.
     org2 : float
         Origin of second axis to be aligned.
-    pos : float
+    pos : float or None, optional
         Relative position to align the origins [0 < pos < 1].
         When pos is None, the origins are aligned to the middle of them.
 
     Returns
     -------
-    None
+
+    Raises
+    ------
+    TypeError
+        If 'ax1' and/or 'ax2' are not the Axes object of matplotlib.
+    ValueError
+        If 'pos' is less than or equal to 0, or more than or equal to 1.
+
+    Examples
+    --------
+    >>> import matplotlib.pyplot as plt
+    >>> from mpl_axes_aligner import align
+    >>> fig = plt.figure()
+    >>> ax1 = fig.add_subplot(111)
+    >>> ax2 = ax1.twiny()
+    >>> ax1.set_xlim(-1.0, 0.0)
+    (-1.0, 0.0)
+    >>> ax2.set_xlim(0.0, 1.0)
+    (0.0, 1.0)
+    >>> align.xaxes(ax1, -0.3, ax2, 0.3, 0.5)
+    >>> ax1.get_xlim()
+    (-1.0, 0.4)
+    >>> ax2.get_xlim()
+    (-0.4, 1.0)
     """
 
     if pos is None:
