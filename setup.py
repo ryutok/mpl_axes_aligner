@@ -4,7 +4,7 @@ with open('README.rst', 'r') as f:
     readme = f.read()
 
 setup(name='mpl_axes_aligner',
-      version='0.2.0',
+      version='0.1',
       author='ryutok',
       author_email='ryutokm@gmail.com',
       url='https://github.com/ryutok/mpl_axes_aligner',
