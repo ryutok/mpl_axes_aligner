@@ -8,6 +8,69 @@ from mpl_axes_aligner import align
 fig = plt.figure()
 
 
+def test_calc_rorg_simple():
+    org = 0.5
+    ival = 0.0
+    fval = 1.0
+    rorg, ival, fval = align._calc_rorg(org, ival, fval)
+    assert round(rorg, 15) == 0.5
+    assert round(ival, 15) == 0.0
+    assert round(fval, 15) == 1.0
+
+
+def test_calc_rorg_outrange_n():
+    org = -0.5
+    ival = 0.0
+    fval = 1.0
+    rorg, ival, fval = align._calc_rorg(org, ival, fval)
+    assert round(rorg, 15) == 0.0
+    assert round(ival, 15) == -0.5
+    assert round(fval, 15) == 1.0
+
+
+def test_calc_rorg_outrange_p():
+    org = 1.5
+    ival = 0.0
+    fval = 1.0
+    rorg, ival, fval = align._calc_rorg(org, ival, fval)
+    assert round(rorg, 15) == 1.0
+    assert round(ival, 15) == 0.0
+    assert round(fval, 15) == 1.5
+
+
+def test_calc_pos_simple():
+    org1 = 0.0
+    org2 = 0.0
+    lim1 = [-1.0, 0.0]
+    lim2 = [0.0, 1.0]
+    pos = align._calc_pos(org1, org2, lim1, lim2)
+    assert round(pos, 15) == 0.5
+
+
+def test_yaxes_outrange_ValueError():
+    fig.clear()
+    ax1 = fig.add_subplot(111)
+    ax2 = ax1.twinx()
+    ax1.set_ylim(-1.0, 0.0)
+    ax2.set_ylim(0.0, 1.0)
+    org1 = 0.5
+    org2 = 1.1
+    with pytest.raises(ValueError):
+        align.yaxes(ax1, org1, ax2, org2)
+
+
+def test_xaxes_outrange_ValueError():
+    fig.clear()
+    ax1 = fig.add_subplot(111)
+    ax2 = ax1.twiny()
+    ax1.set_xlim(-1.0, 0.0)
+    ax2.set_xlim(0.0, 1.0)
+    org1 = 0.5
+    org2 = 1.1
+    with pytest.raises(ValueError):
+        align.xaxes(ax1, org1, ax2, org2)
+
+
 @pytest.mark.parametrize('pos', [-10, 0, 1, 10])
 def test_yaxes_pos_ValueError(pos):
     fig.clear()
@@ -56,28 +119,6 @@ def test_xaxes_axes_TypeError():
         align.xaxes(ax3, org1, ax2, org2, pos)
     with pytest.raises(TypeError):
         align.xaxes(ax1, org1, ax3, org2, pos)
-
-
-# def test_calc_range_simple1():
-#     org1 = 0.0
-#     org2 = 0.0
-#     lim1 = [-1.0, 0.0]
-#     lim2 = [0.0, 1.0]
-#     pos = 0.5
-#     alim1, alim2 = align._calc_range(org1, org2, lim1, lim2, pos)
-#     assert alim1 == [-1.0, 1.0]
-#     assert alim2 == [-1.0, 1.0]
-
-
-# def test_calc_range_simple2():
-#     org1 = 0.0
-#     org2 = 0.0
-#     lim1 = [-1.0, 0.0]
-#     lim2 = [0.0, 1.0]
-#     pos = None
-#     alim1, alim2 = align._calc_range(org1, org2, lim1, lim2, pos)
-#     assert alim1 == [-1.0, 1.0]
-#     assert alim2 == [-1.0, 1.0]
 
 
 def test_yaxes_simple1():

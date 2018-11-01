@@ -1,9 +1,11 @@
-#import pytest
-#import matplotlib
-#matplotlib.use('Agg')
-#import matplotlib.pyplot as plt
-#
+import pytest
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 from mpl_axes_aligner import shift
+
+fig = plt.figure()
 
 
 def test_expand_range_simple():
@@ -84,3 +86,75 @@ def test_shift_range_outrange_p():
     ival, fval = shift._shift_range(org, pos, ival, fval)
     assert round(ival, 15) == 1.0
     assert round(fval, 15) == 2.0
+
+
+@pytest.mark.parametrize('pos', [-2, 2])
+def test_yaxis_shift_ValueError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    with pytest.raises(ValueError):
+        shift.yaxis(ax, org, pos)
+
+
+@pytest.mark.parametrize('pos', [-2, 2])
+def test_xaxis_shift_ValueError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    with pytest.raises(ValueError):
+        shift.xaxis(ax, org, pos)
+
+
+@pytest.mark.parametrize('pos', [0, 1])
+def test_yaxis_shift_NoError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    shift.yaxis(ax, org, pos)
+
+
+@pytest.mark.parametrize('pos', [0, 1])
+def test_xaxis_shift_NoError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    shift.xaxis(ax, org, pos)
+
+
+@pytest.mark.parametrize('pos', [-2, 0, 1, 2])
+def test_yaxis_expand_ValueError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    with pytest.raises(ValueError):
+        shift.yaxis(ax, org, pos, True)
+
+
+@pytest.mark.parametrize('pos', [-2, 0, 1, 2])
+def test_xaxis_expand_ValueError(pos):
+    fig.clear()
+    ax = fig.add_subplot(111)
+    org = 0.5
+    with pytest.raises(ValueError):
+        shift.xaxis(ax, org, pos, True)
+
+
+def test_yaxes_expand_simple():
+    fig.clear()
+    ax = fig.add_subplot(111)
+    ax.set_xlim(0.0, 1.0)
+    org = 0.0
+    pos = 0.5
+    shift.yaxis(ax, org, pos, True)
+    assert ax.get_ylim() == (-1.0, 1.0)
+
+
+def test_xaxes_expand_simple():
+    fig.clear()
+    ax = fig.add_subplot(111)
+    ax.set_xlim(0.0, 1.0)
+    org = 0.0
+    pos = 0.5
+    shift.xaxis(ax, org, pos, True)
+    assert ax.get_xlim() == (-1.0, 1.0)
