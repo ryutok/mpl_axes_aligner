@@ -15,29 +15,29 @@ Matplotlib Axes Aligner
 .. image:: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
    :target: https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE
 
-Adjust the axis limit of `matplotlib.axes.Axes` objects to align the given origins with the given position.
+Adjust the plotting range of ``matplotlib.axes.Axes`` objects to align the origins with the given position.
 
 
 Documents
 ---------
 
-__ http://matplotlib-axes-aligner.rtfd.io/
+`http://matplotlib-axes-aligner.rtfd.io/ <http://matplotlib-axes-aligner.rtfd.io/>`_
 
 
 Requirements
 ------------
 
-- Python >= 3.5
+- Python >= 3.4
 - Matplotlib
 
 
 License
 -------
 
-.. _MIT: https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE
+`MIT <https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE>`_
 
 
 Author
 ------
 
-.. _ryutok: https://github.com/ryutok
+`ryutok <https://github.com/ryutok>`_
