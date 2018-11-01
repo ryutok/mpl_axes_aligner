@@ -31,6 +31,13 @@ Requirements
 - Matplotlib
 
 
+Installation
+------------
+Using ``pip``::
+
+  pip install mpl-axes-aligner
+
+
 License
 -------
 
