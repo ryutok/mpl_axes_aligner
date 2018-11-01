@@ -1,4 +1,4 @@
-doc:
+html:
 	cd docs && pipenv run $(MAKE) html
 
 apidoc:
@@ -6,3 +6,10 @@ apidoc:
 
 test:
 	pipenv run pytest --cov=mpl_axes_aligner --cov-report=term-missing -v tests/
+
+sdist:
+	rm -rf dist/*
+	pipenv run python setup.py sdist bdist_wheel
+
+upload:
+	twine upload dist/*

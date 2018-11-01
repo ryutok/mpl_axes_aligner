@@ -14,5 +14,6 @@ pytest-runner = "*"
 matplotlib = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+twine = "*"
 
 [requires]
