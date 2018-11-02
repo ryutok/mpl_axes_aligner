@@ -11,7 +11,7 @@ python:
 
 install:
   - pip install pipenv
-  - pipenv install -d
+  - pipenv install --dev --skip-lock
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -19,7 +19,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - python -m pytest --cov-report=xml --cov=mpl_axes_aligner tests/
+  - make test-ci
 
 after_script:
   - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
