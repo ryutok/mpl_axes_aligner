@@ -6,12 +6,10 @@ name = "pypi"
 [packages]
 
 [dev-packages]
-pyflakes = "*"
-pycodestyle = "*"
+matplotlib = "*"
 pytest = "*"
 pytest-cov = "*"
-pytest-runner = "*"
-matplotlib = "*"
+pytest-flake8 = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
 twine = "*"
