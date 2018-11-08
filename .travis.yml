@@ -24,8 +24,8 @@ matrix:
     - python: "3.7-dev"
 
 install:
-  - pip install -q matplotlib==$MPL_VERSION
-  - pip install -q pytest pytest-cov
+  - pip install matplotlib==$MPL_VERSION
+  - pip install pytest pytest-cov
   - pip freeze
 
 before_script:
