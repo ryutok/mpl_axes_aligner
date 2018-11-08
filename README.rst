@@ -35,8 +35,8 @@ The latest documents of *Matplotlib axes aligner* are available `here <https://m
 Requirements
 ============
 
-- Python >= 3.4, <= 3.6
-- Matplotlib
+- Python == 3.4, 3.5, 3.6
+- Matplotlib == 2.2, 3.0
 
 
 Installation
