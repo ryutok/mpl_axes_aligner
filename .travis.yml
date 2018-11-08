@@ -7,22 +7,36 @@ env:
 matrix:
   include:
     - python: "2.7"
-      env: MPL_VERSION=2.2.3
+      env:
+        - MPL_VERSION=2.2.3
+        - RUN_FLAKE8=0
+
     - python: "3.4"
-      env: MPL_VERSION=2.2.3
+      env:
+        - MPL_VERSION=2.2.3
+        - RUN_FLAKE8=0
+
     - python: "3.5"
-      env: MPL_VERSION=3.0.1
+      env:
+        - MPL_VERSION=3.0.1
+        - RUN_FLAKE8=0
+
     - python: "3.6"
-      env: MPL_VERSION=3.0.1
+      env:
+        - MPL_VERSION=3.0.1
+        - RUN_FLAKE8=1
+
     - python: "3.7-dev"
-      env: MPL_VERSION=3.0.1
+      env:
+        - MPL_VERSION=3.0.1
+        - RUN_FLAKE8=0
 
   allow_failures:
     - python: "3.7-dev"
 
 install:
   - pip install matplotlib==$MPL_VERSION
-  - pip install pytest pytest-cov
+  - pip install -e .\[test\]
   - pip freeze
 
 before_script:
@@ -32,6 +46,7 @@ before_script:
 
 script:
   - make test-ci
+  - if [[ $RUN_FLAKE8 == 1 ]]; then make flake8; fi
 
 after_script:
   - echo $TRAVIS_TEST_RESULT

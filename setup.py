@@ -13,9 +13,14 @@ setup(
     long_description=readme,
     packages=['mpl_axes_aligner'],
     license="MIT",
-    install_require=[
-        'matplotlib >= 2.2.0',
+    install_requires=[
+        'matplotlib',
     ],
+    extras_require={
+        'test': ['pytest-flake8', 'pytest-cov'],
+        'doc': ['sphinx-rtd-theme'],
+        'release': ['twine'],
+    },
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',

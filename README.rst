@@ -79,6 +79,32 @@ Requirements
 Python 3.7 may be available, but it is not checked.
 
 
+Testing
+=======
+
+In the top directory of mpl_axes_aligner, install required packages for the tests::
+
+  pip install -e .
+  pip install -e .\[test\]
+
+Run the test programs::
+
+  make test
+
+
+Build documents
+===============
+
+In the top directory of mpl_axes_aligner, install required packages for the document building::
+
+  pip install -e .
+  pip install -e .\[doc\]
+
+Build the documents::
+
+  make doc
+
+
 License
 =======
 
