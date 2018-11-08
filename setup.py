@@ -17,7 +17,7 @@ setup(
         'matplotlib',
     ],
     extras_require={
-        'test': ['pytest-flake8', 'pytest-cov', 'pytest'],
+        'test': ['pytest >= 3.5', 'pytest-flake8', 'pytest-cov'],
         'doc': ['sphinx', 'sphinx-rtd-theme'],
         'release': ['twine'],
     },
