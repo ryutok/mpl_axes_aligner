@@ -8,8 +8,6 @@ matrix:
   include:
     - python: "2.7"
       env: MPL_VERSION=2.2.3
-    - python: "3.3"
-      env: MPL_VERSION=2.2.3
     - python: "3.4"
       env: MPL_VERSION=2.2.3
     - python: "3.5"
@@ -20,7 +18,6 @@ matrix:
       env: MPL_VERSION=3.0.1
 
   allow_failures:
-    - python: "3.3"
     - python: "3.7-dev"
 
 install:
