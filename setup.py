@@ -17,8 +17,8 @@ setup(
         'matplotlib',
     ],
     extras_require={
-        'test': ['pytest >= 3.5', 'pytest-flake8', 'pytest-cov'],
-        'doc': ['sphinx', 'sphinx-rtd-theme'],
+        'test': ['pytest-flake8', 'pytest-cov'],
+        'doc': ['sphinx-rtd-theme'],
         'release': ['twine'],
     },
     classifiers=[
