@@ -22,7 +22,7 @@ matrix:
 
 install:
   - pip install matplotlib==$MPL_VERSION
-  - pip install pytest pytest-cov pytest-flake8
+  - pip install -e .\[test\]
   - pip freeze
 
 before_script:
