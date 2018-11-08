@@ -5,7 +5,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='mpl_axes_aligner',
-    version='1.0',
+    version='1.1',
     author='ryutok',
     author_email='ryutokm@gmail.com',
     url='https://github.com/ryutok/mpl_axes_aligner',
