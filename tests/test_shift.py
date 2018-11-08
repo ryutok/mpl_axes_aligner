@@ -64,8 +64,8 @@ def test_shift_range_inverted():
     fval = 0.0
     pos = 0.5
     ival, fval = shift._shift_range(org, pos, ival, fval)
-    assert round(ival, 15) == 1.3
-    assert round(fval, 15) == 0.3
+    assert round(ival, 15) == 0.7
+    assert round(fval, 15) == -0.3
 
 
 def test_shift_range_outrange_n():
