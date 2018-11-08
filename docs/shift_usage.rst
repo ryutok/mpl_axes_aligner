@@ -73,8 +73,14 @@ When you want to shift y = 0 to the center of figure, use :py:func:`.shift.yaxis
    :align: center
 
 
-Origins (``org``)
--------------------------------
+Argument 1: Axis (``ax``)
+-----------------------------
+
+The first argument of :py:func:`.shift.yaxis` (``ax``) is the ``matplotlib.axes.Axes`` object which you want to change.
+
+
+Argument 2: Origins (``org``)
+-----------------------------
 
 The second argument of :py:func:`.shift.yaxis` (``org``) is the origin which you want to align.
 
@@ -84,8 +90,8 @@ The second argument of :py:func:`.shift.yaxis` (``org``) is the origin which you
 
 .. _shift_pos:
 
-Relative position (``pos``)
----------------------------
+Argument 3: Relative position (``pos``)
+---------------------------------------
 
 The third argument of :py:func:`.shift.yaxis` (``pos``) is the relative position which the origin is aligned.
 When ``expand = True``, ``pos`` should satisfy the condition :math:`0 < pos < 1`, otherwise, ``pos`` should satisfy the condition :math:`0 \le pos \le 1`.
@@ -98,8 +104,8 @@ When ``pos`` is 0.5, the origin is aligned at the center of figure.
 
 .. _shift_expand:
 
-Shifting method (``expand``)
-----------------------------
+Argument 4: Shifting method (``expand``)
+----------------------------------------
 
 The last argument of :py:func:`.shift.yaxis` (``expand``) toggle the origin shift method.
 When ``expand = True``, the plotting range is adjusted without reducing plotting range:
