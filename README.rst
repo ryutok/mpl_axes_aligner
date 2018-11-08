@@ -20,6 +20,9 @@ Matplotlib Axes Aligner
    :target: https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE
 
 
+Overview
+========
+
 *Matplotlib axes aligner* (``mpl_axes_aligner``) package contains the modules which adjust the plotting range of `matplotlib.axes.Axes <https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes>`_ objects to align their origins.
 
 - ``mpl_axes_aligner.shift`` expands or shifts the plotting range of a matplotlib axis to align the origin with the given position.
@@ -51,7 +54,7 @@ Usage
 
    plt.show()
 
-.. image:: ./docs/img/intro_plt.png
+.. image:: https://github.com/ryutok/mpl_axes_aligner/blob/master/docs/img/intro_plt.png?raw=true
 
 
 Documentation
