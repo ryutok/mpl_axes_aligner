@@ -4,7 +4,7 @@ doc:
 test: flake8
 	python -m pytest --cov=mpl_axes_aligner --cov-report=term-missing -v tests/
 
-test-ci: flake8
+test-ci:
 	python -m pytest --cov=mpl_axes_aligner --cov-report=xml tests/
 
 flake8:
