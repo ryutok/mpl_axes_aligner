@@ -2,6 +2,12 @@
 Align module usage
 ==================
 
+:py:mod:`mpl_axes_aligner.align` adjust the plotting range of two matplotlib axes to align their origins with the given position.
+
+- :py:func:`.align.xaxes` for x-axes
+- :py:func:`.align.yaxes` for y-axes
+
+
 Align two y axes
 ================
 

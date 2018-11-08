@@ -2,6 +2,12 @@
 Shift module usage
 ==================
 
+:py:mod:`mpl_axes_aligner.shift` expands or shifts the plotting range of a matplotlib axis to align the origin with the given position.
+
+- :py:func:`.shift.xasis` for x-axis
+- :py:func:`.shift.yasis` for y-axis
+
+
 Shift y axis
 ============
 
