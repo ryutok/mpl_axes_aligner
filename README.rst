@@ -20,16 +20,51 @@ Matplotlib Axes Aligner
    :target: https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE
 
 
-Introduction
-============
-
 *Matplotlib axes aligner* (``mpl_axes_aligner``) package contains the modules which adjust the plotting range of `matplotlib.axes.Axes <https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes>`_ objects to align their origins.
 
+- ``mpl_axes_aligner.shift`` expands or shifts the plotting range of a matplotlib axis to align the origin with the given position.
+- ``mpl_axes_aligner.align`` adjust the plotting range of two matplotlib axes to align their origins with the given position.
 
-Documents
-=========
 
-The latest documents of *Matplotlib axes aligner* are available `here <https://matplotlib-axes-aligner.readthedocs.io/en/latest/?badge=latest>`_
+Usage
+=====
+
+::
+
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import mpl_axes_aligner
+
+   x = np.arange(0.0, 30, 0.1)
+   y1 = 0.1 * x * np.sin(x)
+   y2 = 0.001*x**3 - 0.03*x**2 + 0.12*x
+
+   fig = plt.figure()
+   ax1 = fig.add_subplot(111)
+   ax2 = ax1.twinx()
+
+   ax1.plot(x, y1, color='blue', label='Plot 1')
+   ax2.plot(x, y2, color='red', label='Plot 2')
+
+   # Align y = 0 of ax1 and ax2 with the center of figure.
+   mpl_axes_aligner.align.yaxes(ax1, 0, ax2, 0, 0.5)
+
+   plt.show()
+
+.. image:: ./docs/img/intro_plt.png
+
+
+Documentation
+=============
+
+https://matplotlib-axes-aligner.rtfd.io
+
+
+Installation
+============
+Install from `PyPI <https://pypi.org/project/mpl-axes-aligner/>`_::
+
+  pip install mpl-axes-aligner
 
 
 Requirements
@@ -41,17 +76,10 @@ Requirements
 Python 3.7 may be available, but it is not checked.
 
 
-Installation
-============
-You can install from `PyPI <https://pypi.org/project/mpl-axes-aligner/>`_::
-
-  pip install mpl-axes-aligner
-
-
 License
 =======
 
-`MIT <https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE>`_
+`MIT License <https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE>`_
 
 
 Author
