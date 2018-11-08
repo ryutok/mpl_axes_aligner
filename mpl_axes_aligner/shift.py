@@ -17,7 +17,7 @@ def _shift_range(org, pos, ival, fval):
                          "0 <= pos <= 1.")
 
     rorg = (org - ival) / (fval - ival)
-    diff = rorg - pos
+    diff = (rorg-pos) * (fval-ival) + ival
     return ival+diff, fval+diff
 
 
