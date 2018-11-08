@@ -5,13 +5,14 @@ env:
     - CC_TEST_REPORTER_ID=3b92efbe2bff1d91058380e57b3eb8d12a9d5d40ae59eb7002b53e9c6b9d41dd
 
 python:
+  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
+  - "3.7"
 
 install:
-  - pip install pipenv
-  - pipenv install --dev --skip-lock
+  - pip install -r ci_requirements.txt
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
