@@ -8,7 +8,7 @@ test-ci:
 	python -m pytest --cov=mpl_axes_aligner --cov-report=xml tests/
 
 flake8:
-	python -m pytest --flake8 mpl_axes_aligner/
+	python -m pytest -v --flake8 mpl_axes_aligner/
 
 publish: dist
 	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
