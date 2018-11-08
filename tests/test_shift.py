@@ -11,81 +11,81 @@ fig = plt.figure()
 def test_expand_range_simple():
     org = 0.0
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._expand_range(org, pos, ival, fval)
-    assert round(ival, 15) == -1.0
-    assert round(fval, 15) == 1.0
+    assert round(ival, 15) == -2.0
+    assert round(fval, 15) == 2.0
 
 
 def test_expand_range_inverted():
     org = 0.0
-    ival = 1.0
+    ival = 2.0
     fval = 0.0
     pos = 0.5
     ival, fval = shift._expand_range(org, pos, ival, fval)
-    assert round(ival, 15) == 1.0
-    assert round(fval, 15) == -1.0
+    assert round(ival, 15) == 2.0
+    assert round(fval, 15) == -2.0
 
 
 def test_expand_range_outrange_n():
-    org = -0.5
+    org = -1.0
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._expand_range(org, pos, ival, fval)
-    assert round(ival, 15) == -2.0
-    assert round(fval, 15) == 1.0
+    assert round(ival, 15) == -4.0
+    assert round(fval, 15) == 2.0
 
 
 def test_expand_range_outrange_p():
-    org = 1.5
+    org = 3.0
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._expand_range(org, pos, ival, fval)
     assert round(ival, 15) == 0.0
-    assert round(fval, 15) == 3.0
+    assert round(fval, 15) == 6.0
 
 
 def test_shift_range_simple():
-    org = 0.2
+    org = 0.5
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._shift_range(org, pos, ival, fval)
-    assert round(ival, 15) == -0.3
-    assert round(fval, 15) == 0.7
+    assert round(ival, 15) == -0.5
+    assert round(fval, 15) == 1.5
 
 
 def test_shift_range_inverted():
-    org = 0.2
-    ival = 1.0
+    org = 0.5
+    ival = 2.0
     fval = 0.0
     pos = 0.5
     ival, fval = shift._shift_range(org, pos, ival, fval)
-    assert round(ival, 15) == 0.7
-    assert round(fval, 15) == -0.3
+    assert round(ival, 15) == 1.5
+    assert round(fval, 15) == -0.5
 
 
 def test_shift_range_outrange_n():
-    org = -0.5
+    org = -1.0
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._shift_range(org, pos, ival, fval)
-    assert round(ival, 15) == -1.0
+    assert round(ival, 15) == -2.0
     assert round(fval, 15) == 0.0
 
 
 def test_shift_range_outrange_p():
-    org = 1.5
+    org = 3.0
     ival = 0.0
-    fval = 1.0
+    fval = 2.0
     pos = 0.5
     ival, fval = shift._shift_range(org, pos, ival, fval)
-    assert round(ival, 15) == 1.0
-    assert round(fval, 15) == 2.0
+    assert round(ival, 15) == 2.0
+    assert round(fval, 15) == 4.0
 
 
 @pytest.mark.parametrize('pos', [-2, 2])
