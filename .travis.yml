@@ -8,12 +8,12 @@ matrix:
   include:
     - python: "2.7"
       env:
-        - MPL_VERSION=2.23
+        - MPL_VERSION=2.2.3
         - RUN_FLAKE8=0
 
     - python: "3.4"
       env:
-        - MPL_VERSION=2.23
+        - MPL_VERSION=2.2.3
         - RUN_FLAKE8=0
 
     - python: "3.5"
@@ -37,7 +37,6 @@ matrix:
 install:
   - pip install matplotlib==$MPL_VERSION
   - pip install -e .\[test\]
-  - pip check
   - pip freeze
 
 before_script:
@@ -47,9 +46,7 @@ before_script:
 
 script:
   - make test-ci
-  - if [[ $RUN_FLAKE8 == 1 ]]; then
-      make flake8
-    fi
+  - if [[ $RUN_FLAKE8 == 1 ]]; then make flake8; fi
 
 after_script:
   - echo $TRAVIS_TEST_RESULT
