@@ -140,8 +140,8 @@ When :math:`\bar{o} < p`:
 When ``expand = False``, the plotting range is simply shifted:
 
 .. math::
-   y'_t &= y_t + \var{o} - p \\
-   y'_b &= y_b + \var{o} - p
+   y'_t &= y_t + \bar{o} - p \\
+   y'_b &= y_b + \bar{o} - p
 
 
 
