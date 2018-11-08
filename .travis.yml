@@ -4,15 +4,27 @@ env:
   global:
     - CC_TEST_REPORTER_ID=3b92efbe2bff1d91058380e57b3eb8d12a9d5d40ae59eb7002b53e9c6b9d41dd
 
-python:
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
+matrix:
+  include:
+    - python: "3.3"
+      env: MPL_VERSION=2.2
+    - python: "3.4"
+      env: MPL_VERSION=2.2
+    - python: "3.5"
+      env: MPL_VERSION=3.0
+    - python: "3.6"
+      env: MPL_VERSION=3.0
+    - python: "3.7-dev"
+      env: MPL_VERSION=3.0
+
+  allow_failures:
+    - python: "3.3"
+    - python: "3.7-dev"
 
 install:
-  - pip install -r ci_requirements.txt
+  - pip install -q matplotlib==$MPL_VERSION
+  - pip install -q pytest pytest-cov
+  - pip freeze
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
