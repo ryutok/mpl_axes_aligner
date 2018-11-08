@@ -84,13 +84,13 @@ When you want to align y = 0 point of left and right y axes, use :py:func:`.alig
 The argument ``expand`` is always ``True`` (:ref:`shift_expand`).
 
 
-Argumetns 1, 3: Axes (``ax1`` and ``ax2``)
+Argumetns 1 and 3: Axes (``ax1`` and ``ax2``)
 ------------------------------------------
 
 The first and third arguments of :py:func:`.align.yaxes` (``ax1`` and ``ax2``) are the ``matplotlib.axes.Axes`` objects which you want to change.
 
 
-Argumetns 2, 4: Origins (``org1`` and ``org2``)
+Argumetns 2 and 4: Origins (``org1`` and ``org2``)
 -----------------------------------------------
 
 The second and fourth arguments of :py:func:`.align.yaxes` (``org1`` and ``org2``) are the origins which you want to align.
