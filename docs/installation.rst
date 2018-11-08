@@ -12,6 +12,6 @@ Python 3.7 may be available, but it is not checked.
 
 Installation using pip
 ----------------------
-You can install from `PyPI <https://pypi.org/project/mpl-axes-aligner/>`_::
+Install from `PyPI <https://pypi.org/project/mpl-axes-aligner/>`_::
 
   pip install mpl-axes-aligner

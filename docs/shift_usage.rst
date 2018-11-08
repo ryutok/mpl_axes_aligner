@@ -2,6 +2,12 @@
 Shift module usage
 ==================
 
+:py:mod:`mpl_axes_aligner.shift` expands or shifts the plotting range of a matplotlib axis to align the origin with the given position.
+
+- :py:func:`.shift.xasis` for x-axis
+- :py:func:`.shift.yasis` for y-axis
+
+
 Shift y axis
 ============
 
@@ -67,8 +73,14 @@ When you want to shift y = 0 to the center of figure, use :py:func:`.shift.yaxis
    :align: center
 
 
-Origins (``org``)
--------------------------------
+Argument 1: Axis (``ax``)
+-----------------------------
+
+The first argument of :py:func:`.shift.yaxis` (``ax``) is the ``matplotlib.axes.Axes`` object which you want to change.
+
+
+Argument 2: Origins (``org``)
+-----------------------------
 
 The second argument of :py:func:`.shift.yaxis` (``org``) is the origin which you want to align.
 
@@ -78,8 +90,8 @@ The second argument of :py:func:`.shift.yaxis` (``org``) is the origin which you
 
 .. _shift_pos:
 
-Relative position (``pos``)
----------------------------
+Argument 3: Relative position (``pos``)
+---------------------------------------
 
 The third argument of :py:func:`.shift.yaxis` (``pos``) is the relative position which the origin is aligned.
 When ``expand = True``, ``pos`` should satisfy the condition :math:`0 < pos < 1`, otherwise, ``pos`` should satisfy the condition :math:`0 \le pos \le 1`.
@@ -92,34 +104,45 @@ When ``pos`` is 0.5, the origin is aligned at the center of figure.
 
 .. _shift_expand:
 
-Shifting method (``expand``)
-----------------------------
+Argument 4: Shifting method (``expand``)
+----------------------------------------
 
 The last argument of :py:func:`.shift.yaxis` (``expand``) toggle the origin shift method.
-When ``expand = True``, the plotting range is adjusted without reducing plotting range:
+When ``expand = True``, the plotting range is adjusted without reducing plotting range, otherwise, the plotting range is simply shifted:
 
-When :math:`\overline{org} > pos`,
+.. image:: img/shift_plt5.png
+   :align: center
+
+
+The mathematical details are explained here.
+:math:`o` and :math:`p` are the given origin and relative position, respectively.
+And, :math:`y_b` and :math:`y_t` are the initial values of bottom and top of the axis.
+First, we calculate the relative position of the origin which represented by :math:`\bar{o}`:
 
 .. math::
-   \bar{y}_\mathrm{top} = \frac{org + (pos - 1) \times y_\mathrm{bottom}}{pos},
-   \qquad \bar{y}_\mathrm{bottom} = y_\mathrm{bottom}
+   \bar{o} = \frac{o - y_b}{y_t - y_b}
 
-When :math:`\overline{org} < pos`,
+
+When ``expand = True``, the new values of bottom and top, :math:`y'_b` and :math:`y'_t`, are calculated to satisfy the condition :math:`\bar{o} = p`.
+When :math:`\bar{o} > p`:
 
 .. math::
-   \bar{y}_\mathrm{bottom} = \frac{org - pos \times y_\mathrm{top}}{1 - pos},
-   \qquad \bar{y}_\mathrm{top} = y_\mathrm{top}
+   y'_t &= \frac{o + (p - 1) \times y_b}{p} \\
+   y'_b &= y_b
+
+When :math:`\bar{o} < p`:
+
+.. math::
+   y'_t &= y_t \\
+   y'_b &= \frac{o - p \times y_t}{1 - p}
+
 
 When ``expand = False``, the plotting range is simply shifted:
 
 .. math::
-   \bar{y}_\mathrm{bottom} &= y_\mathrm{bottom} + \overline{org} - pos \\
-   \bar{y}_\mathrm{top} &= y_\mathrm{top} + \overline{org} - pos
+   y'_t &= y_t + (\bar{o} - p) * (y_t - y_b) \\
+   y'_b &= y_b + (\bar{o} - p) * (y_t - y_b)
 
-Where, :math:`\overline{org}` is the relative position of origin, :math:`y_\mathrm{bottom}` and :math:`y_\mathrm{top}` are the initial plotting range, and :math:`\bar{y}_\mathrm{bottom}` and :math:`\bar{y}_\mathrm{top}` are the calculated plotting range.
-
-.. image:: img/shift_plt5.png
-   :align: center
 
 
 Shift x axis

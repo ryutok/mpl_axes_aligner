@@ -20,10 +20,13 @@ Matplotlib Axes Aligner
    :target: https://github.com/ryutok/mpl_axes_aligner/blob/master/LICENSE
 
 
-Introduction
-============
+Overview
+========
 
 *Matplotlib axes aligner* (:py:mod:`mpl_axes_aligner`) package contains the modules which adjust the plotting range of `matplotlib.axes.Axes <https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes>`_ objects to align their origins.
+
+- :py:mod:`mpl_axes_aligner.shift` expands or shifts the plotting range of a matplotlib axis to align the origin with the given position.
+- :py:mod:`mpl_axes_aligner.align` adjust the plotting range of two matplotlib axes to align their origins with the given position.
 
 When you want to align the y = 0 of plot 1 and plot 2 with the center of the figure, it is done by introducing the function :py:func:`mpl_axes_aligner.align.yaxes`.
 
