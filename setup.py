@@ -7,7 +7,7 @@ setup(
     name='mpl_axes_aligner',
     version='1.1',
     author='ryutok',
-    author_email='ryutokm@gmail.com',
+    author_email='ryutokm+os@gmail.com',
     url='https://github.com/ryutok/mpl_axes_aligner',
     description='Adjust the plotting range of matplotlib.axes.Axes objects to align the origins with the given position',
     long_description=readme,
