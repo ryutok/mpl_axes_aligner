@@ -30,5 +30,4 @@ jobs:
     - name: Test
       run: |
         make test-ci
-        if [[ $RUN_FLAKE8 == 1 ]]; then make flake8; fi
-      
+        make flake8
