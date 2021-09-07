@@ -11,10 +11,10 @@ flake8:
 	python -m pytest -v --flake8 mpl_axes_aligner/
 
 publish: dist
-	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+	twine upload --repository pypi dist/*
 
 publish-test: dist
-	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+	twine upload --repository testpypi dist/*
 
 dist: clean-pub
 	python setup.py sdist bdist_wheel
