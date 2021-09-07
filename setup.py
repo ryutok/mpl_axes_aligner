@@ -5,7 +5,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='mpl_axes_aligner',
-    version='1.2',
+    version='1.3',
     author='ryutok',
     author_email='ryutokm+os@gmail.com',
     url='https://github.com/ryutok/mpl_axes_aligner',
@@ -23,9 +23,9 @@ setup(
     },
     classifiers=[
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'License :: OSI Approved :: MIT License',
         "Operating System :: OS Independent",
         'Topic :: Scientific/Engineering :: Visualization',

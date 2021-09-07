@@ -2,15 +2,9 @@
 Matplotlib Axes Aligner
 =======================
 
-.. image:: https://travis-ci.org/ryutok/mpl_axes_aligner.svg?branch=master
-   :target: https://travis-ci.org/ryutok/mpl_axes_aligner
+.. image:: https://github.com/ryutok/mpl_axes_aligner/actions/workflows/python-app.yml/badge.svg?branch=master
+   :target: https://github.com/ryutok/mpl_axes_aligner/actions/workflows/python-app.yml
    :alt: Build Status
-.. image:: https://api.codeclimate.com/v1/badges/86a7122db1585d63fcb9/maintainability
-   :target: https://codeclimate.com/github/ryutok/mpl_axes_aligner/maintainability
-   :alt: Maintainability
-.. image:: https://api.codeclimate.com/v1/badges/86a7122db1585d63fcb9/test_coverage
-   :target: https://codeclimate.com/github/ryutok/mpl_axes_aligner/test_coverage
-   :alt: Test Coverage
 .. image:: https://badge.fury.io/py/mpl-axes-aligner.svg
    :target: https://badge.fury.io/py/mpl-axes-aligner
    :alt: PyPI Package

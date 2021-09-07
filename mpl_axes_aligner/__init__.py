@@ -2,7 +2,9 @@
 the origins with the given position.
 """
 
-from .shift import *
-from .align import *
+from . import shift
+from . import align
 
 name = 'mpl_axes_aligner'
+
+__all__ = ["shift", "align"]
